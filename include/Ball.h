@@ -6,16 +6,16 @@
 class Ball
 {
 private:
-    int m_radius;
-    float m_vx; // horizontal velocity
-    float m_vy; // vertical velocity
-    float m_x;  // horizontal position
-    float m_y;  // vertical position
     bool m_moving;
     sf::CircleShape m_ball;
     sf::SoundBuffer buffer;
     Sound sound;
 public:
+    int m_radius;
+    float m_vx; // horizontal velocity
+    float m_vy; // vertical velocity
+    float m_x;  // horizontal position
+    float m_y;  // vertical position
     Ball();
     void draw_ball(sf::RenderWindow &window);
     void move_ball();

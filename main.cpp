@@ -1,10 +1,10 @@
 #include <SFML/Graphics.hpp>
-#include "include/Ball.h"
+#include "Ball.h"
 #include <iostream>
-#include "include/Paddle.h"
-#include "include/Config.h"
-#include "include/Collision.h"
-#include "include/Brick.h"
+#include "Paddle.h"
+#include "Config.h"
+#include "Collision.h"
+#include "Brick.h"
 
 int main()
 {
@@ -39,8 +39,7 @@ int main()
 
         if (check_collision(ball.get_shape(), paddle.get_shape()))
         {
-            std::cout << "Collision detected! Stopping the game." << std::endl;
-            break;
+            calculate_collision(ball, paddle);
         }
         window.clear();
         ball.draw_ball(window);
