@@ -22,4 +22,5 @@ public:
     void start_ball();
     void screen_collision();
     sf::CircleShape get_shape();
+    sf::FloatRect get_bounds();
 };

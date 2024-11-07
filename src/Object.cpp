@@ -20,3 +20,8 @@ sf::Vector2f Object::get_size() const
 {
     return m_object.getSize();
 }
+
+sf::FloatRect Object::get_bounds() const
+{
+    return m_object.getGlobalBounds();
+}

@@ -37,7 +37,7 @@ int main()
             }
         }
 
-        if (check_collision(ball.get_shape(), paddle.get_shape()))
+        if (check_collision(ball, paddle))
         {
             calculate_collision(ball, paddle);
         }

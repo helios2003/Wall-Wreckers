@@ -4,5 +4,5 @@
 #include "Ball.h"
 #include "Object.h"
 
-bool check_collision(const sf::CircleShape& ball, const sf::RectangleShape& object);
+bool check_collision(Ball &ball, Object &object);
 void calculate_collision(Ball& ball, Object& object);

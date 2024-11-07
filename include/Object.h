@@ -12,4 +12,5 @@ public:
     sf::RectangleShape get_shape();
     sf::Vector2f get_position() const;
     sf::Vector2f get_size() const;
+    sf::FloatRect get_bounds() const;
 };
