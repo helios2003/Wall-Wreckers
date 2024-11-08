@@ -32,7 +32,7 @@ void calculate_collision(Ball &ball, Object &object)
     float x_dis = std::abs(ball_center.x - object_center.x);
     float half_len = object_size.x / 2;
 
-    float adjustment_factor = 1.0f + (1.0f / (1.0f + std::exp(-3 * ((x_dis * 0.25f) / half_len - 0.5f)))) * 0.1f;
+    float adjustment_factor = 1.0f + (1.0f / (1.0f + std::exp(-3 * ((x_dis * 0.1f) / half_len - 0.5f)))) * 0.1f;
     float new_vy = ball.m_vy * adjustment_factor;
     ball.m_vy = new_vy;
 }

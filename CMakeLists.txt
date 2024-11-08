@@ -17,6 +17,7 @@ set(SRCS
     src/Paddle.cpp
     src/Sound.cpp
     src/Game.cpp
+    src/Score.cpp
 )
 
 add_executable(game.out ${SRCS})

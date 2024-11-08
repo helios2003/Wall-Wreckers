@@ -9,6 +9,7 @@
 #include "Paddle.h"
 #include "Brick.h"
 #include "Config.h"
+#include "Score.h"
 
 class Game
 {
@@ -18,6 +19,8 @@ private:
     Paddle paddle;
     Brick bricks[LAYER_COUNT][BRICK_COUNT_PER_LAYER];
     Sound sound;
+    Score score;
+    
 public:
     Game();
     void run_game();

@@ -26,3 +26,8 @@ void Sound::sound_paddle_collision()
 {
     paddle_collision_sound.play();
 }
+
+void Sound::sound_failure()
+{
+    failure_sound.play();
+}

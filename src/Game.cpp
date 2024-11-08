@@ -3,8 +3,6 @@
 Game::Game() : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Wall Wreckers")
 {
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Wall Wreckers");
-    Ball ball;
-    Paddle paddle;
 
     for (int i = 0; i < LAYER_COUNT; ++i)
     {
@@ -119,6 +117,7 @@ void Game::update()
     if (check_collision(ball, paddle))
     {
         calculate_collision(ball, paddle);
+        score.increase_score();
     }
 }
 
@@ -127,6 +126,7 @@ void Game::render()
     window.clear();
     ball.draw_ball(window);
     paddle.draw_object(window);
+    score.draw_score(window);
 
     for (int i = 0; i < LAYER_COUNT; ++i)
     {

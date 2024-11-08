@@ -9,7 +9,7 @@ git clone https://github.com/helios2003/Wall-Wreckers.git
 ```
 - Ensure that you have [CMake](https://cmake.org/download/) and [SFML](https://www.sfml-dev.org/download.php) in your system.
 - Run the script ``run.sh`` using ``./run.sh``.
-- The game window opens and you can enojoy the game.
+- The game window opens and you can enjoy the game.
 
 ## Tech Stack
 - C++

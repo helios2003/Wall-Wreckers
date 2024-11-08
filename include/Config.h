@@ -15,5 +15,8 @@
 #define BRICK_HEIGHT 20.0f
 #define BRICK_WIDTH 50.0f
 
+#define SCORE_HEIGHT 30.0f
+#define SCORE_WIDTH 140.0f
+
 #define BRICK_COUNT_PER_LAYER 24 
 #define LAYER_COUNT 3
