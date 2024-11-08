@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+#include <cmath>
 #include <SFML/Graphics.hpp>
 #include "Ball.h"
 #include "Object.h"

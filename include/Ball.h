@@ -1,7 +1,11 @@
 #pragma once
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include "../include/Sound.h"
+#include <SFML/System.hpp>
+#include "Ball.h"
+#include "Config.h"
+#include "Sound.h"
 
 class Ball
 {

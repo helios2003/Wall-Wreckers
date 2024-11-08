@@ -1,4 +1,3 @@
-#include <SFML/Graphics.hpp>
 #include "Object.h"
 
 void Object::draw_object(sf::RenderWindow &window)

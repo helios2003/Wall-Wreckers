@@ -1,6 +1,4 @@
 #include "Collision.h"
-#include <iostream>
-#include <cmath>
 
 bool check_collision(Ball &ball, Object &object)
 {

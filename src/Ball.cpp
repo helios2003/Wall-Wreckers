@@ -1,12 +1,8 @@
-#include <iostream>
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/System.hpp>
 #include "Ball.h"
-#include "Config.h"
 
 Ball::Ball() : m_moving(false), m_radius(BALL_RADIUS), m_vx(HORIZONTAL_VELOCITY),
-               m_vy(VERTICAL_VELOCITY), m_x(HORIZONTAL_POSITION), m_y(WINDOW_HEIGHT - PADDLE_HEIGHT - 2 * BALL_RADIUS)
+               m_vy(VERTICAL_VELOCITY), m_x(HORIZONTAL_POSITION), 
+               m_y(WINDOW_HEIGHT - PADDLE_HEIGHT - 2 * BALL_RADIUS)
 {
     m_ball.setFillColor(sf::Color::White);
     m_ball.setRadius(m_radius);

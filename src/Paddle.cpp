@@ -1,8 +1,7 @@
-#include <SFML/Graphics.hpp>
 #include "Paddle.h"
 #include "Config.h"
 
-Paddle::Paddle() : m_position((WINDOW_WIDTH - ((PADDLE_WIDTH) / 2.0f)) / 2.0f)
+Paddle::Paddle() : m_position((WINDOW_WIDTH - PADDLE_WIDTH) / 2.0f) 
 {
     m_object.setFillColor(sf::Color::Red);
     m_object.setSize(sf::Vector2f(PADDLE_WIDTH, PADDLE_WIDTH));

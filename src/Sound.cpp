@@ -1,4 +1,3 @@
-#include <SFML/Audio.hpp>
 #include "Sound.h"
 
 Sound::Sound()
