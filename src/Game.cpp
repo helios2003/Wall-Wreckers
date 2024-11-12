@@ -86,6 +86,32 @@ void Game::start_game()
     }
 }
 
+void Game::end_game()
+{
+    sf::Font font;
+    font.loadFromFile("assets/font/stencil.ttf");
+
+    sf::Text text;
+    text.setFont(font);
+    text.setCharacterSize(60);
+    text.setFillColor(sf::Color::White);
+
+    text.setString("YOU LOOSE!!");
+    sf::FloatRect textBounds = text.getGlobalBounds();
+    text.setOrigin(textBounds.width / 2, textBounds.height / 2);
+    text.setPosition(window.getSize().x / 2, window.getSize().y / 2);
+
+    sf::Clock clock;
+    sound.sound_failure();
+
+    while (clock.getElapsedTime().asSeconds() < 2.0f)
+    {
+        window.draw(text);
+        window.display();
+    }
+    window.close();
+}
+
 void Game::handle_events()
 {
     sf::Event event;
@@ -103,7 +129,7 @@ void Game::handle_events()
         {
             paddle.move_right();
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
         {
             start_game();
         }
@@ -112,19 +138,19 @@ void Game::handle_events()
 
 void Game::update()
 {
-    
-    if (check_collision(ball, paddle))
+
+    if (Collision::check_collision(ball, paddle))
     {
-        calculate_collision(ball, paddle);
+        Collision::calculate_collision(ball, paddle);
         score.increase_score();
     }
     if (2 * ball.m_radius + ball.m_y > WINDOW_HEIGHT)
-    {    
-        window.close();
+    {
+        end_game();
         return;
     }
     ball.move_ball(paddle);
-    screen_collision(ball);
+    Collision::screen_collision(ball);
 }
 
 void Game::render()

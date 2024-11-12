@@ -1,6 +1,6 @@
 #include "Collision.h"
 
-void screen_collision(Ball &ball)
+void Collision::screen_collision(Ball &ball)
 {
     if (ball.m_x <= 0 || ball.m_x + 2 * ball.m_radius >= WINDOW_WIDTH)
     {
@@ -13,7 +13,7 @@ void screen_collision(Ball &ball)
     }
 }
 
-bool check_collision(Ball &ball, Object &object)
+bool Collision::check_collision(Ball &ball, Object &object)
 {
     sf::FloatRect box_rect = object.get_bounds();
     float radius = ball.m_radius;
@@ -32,7 +32,7 @@ bool check_collision(Ball &ball, Object &object)
     return distance_squared < (radius * radius);
 }
 
-void calculate_collision(Ball &ball, Object &object)
+void Collision::calculate_collision(Ball &ball, Object &object)
 {
     sf::FloatRect box_rect = object.get_bounds();
     float radius = ball.m_radius;

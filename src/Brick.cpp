@@ -12,3 +12,13 @@ Brick::Brick(float x, float y, sf::Color color) : Brick()
     m_object.setOutlineThickness(1.0f);
     m_object.setPosition(x, y);
 };
+
+void Brick::draw_object(sf::RenderWindow& window)
+{
+    if (!is_destroyed)
+    {
+        window.draw(m_object);
+    }
+}
+
+

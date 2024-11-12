@@ -24,8 +24,8 @@ public:
     Game();
     void run_game();
     void start_game();
+    void end_game();
     void handle_events();
     void update();
     void render();
-    void finish();
 };
