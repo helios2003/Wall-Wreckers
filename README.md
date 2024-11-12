@@ -1,6 +1,6 @@
 # Wall Wreckers
 
-Wall Wreckers is a game inspired by classic Atari games and is implemented in C++. In this game, players use a paddle to bounce a ball and break through walls of bricks, aiming to clear the screen and score points. If players fail to keep the ball from falling off the bottom of the screen, they lose a life.
+Wall Wreckers is a game inspired by classic Atari games and is implemented in C++. In this game, players use a paddle to bounce a ball and break through walls of bricks, aiming to clear the screen and score points. If players fail to keep the ball from falling off the bottom of the screen, they lose a life. I made this game primarily to improve my understanding of C++ and Graphics Programming.
 
 ## Getting Started
 - Clone the repository using the following command

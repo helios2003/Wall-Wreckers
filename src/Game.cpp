@@ -2,23 +2,21 @@
 
 Game::Game() : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Wall Wreckers")
 {
-    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Wall Wreckers");
-
     for (int i = 0; i < LAYER_COUNT; ++i)
     {
         for (int j = 0; j < BRICK_COUNT_PER_LAYER; ++j)
         {
             if (i == 0)
             {
-                bricks[i][j] = Brick(50 * j, 50 * (i + 1), sf::Color::Red);
+                bricks[i][j] = Brick(60 * j, 60 * (i + 1), sf::Color::Red);
             }
             else if (i == 1)
             {
-                bricks[i][j] = Brick(50 * j, 50 * (i + 1), sf::Color::Green);
+                bricks[i][j] = Brick(60 * j, 60 * (i + 1), sf::Color::Green);
             }
             else
             {
-                bricks[i][j] = Brick(50 * j, 50 * (i + 1), sf::Color::Blue);
+                bricks[i][j] = Brick(60 * j, 60 * (i + 1), sf::Color::Blue);
             }
         }
     }
@@ -29,16 +27,16 @@ void Game::run_game()
     while (window.isOpen())
     {
         handle_events();
-        render();
         update();
+        render();
     }
 }
 
 void Game::start_game()
 {
     sf::Font font;
-
     font.loadFromFile("assets/font/stencil.ttf");
+
     sf::Text text;
     text.setFont(font);
     text.setCharacterSize(60);
@@ -54,7 +52,7 @@ void Game::start_game()
     text.setString(std::to_string(value));
     sound.sound_countdown();
 
-    while (is_active)
+    while (is_active && window.isOpen())
     {
         window.clear();
 
@@ -79,9 +77,11 @@ void Game::start_game()
             ball.start_ball();
         }
 
-        // update the bounds
+        // Update text bounds and origin
         textBounds = text.getGlobalBounds();
         text.setOrigin(textBounds.width / 2, textBounds.height / 2);
+
+        window.draw(text);
         window.display();
     }
 }
@@ -95,36 +95,41 @@ void Game::handle_events()
         {
             window.close();
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        {
-            start_game();
-        }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
             paddle.move_left();
         }
-
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
             paddle.move_right();
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            start_game();
         }
     }
 }
 
 void Game::update()
 {
-    ball.move_ball();
+    
     if (check_collision(ball, paddle))
     {
         calculate_collision(ball, paddle);
         score.increase_score();
     }
+    if (2 * ball.m_radius + ball.m_y > WINDOW_HEIGHT)
+    {    
+        window.close();
+        return;
+    }
+    ball.move_ball(paddle);
+    screen_collision(ball);
 }
 
 void Game::render()
 {
     window.clear();
-    ball.draw_ball(window);
     paddle.draw_object(window);
     score.draw_score(window);
 
@@ -136,5 +141,6 @@ void Game::render()
         }
     }
 
+    ball.draw_ball(window);
     window.display();
 }

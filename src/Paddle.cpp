@@ -4,7 +4,7 @@
 Paddle::Paddle() : m_position((WINDOW_WIDTH - PADDLE_WIDTH) / 2.0f) 
 {
     m_object.setFillColor(sf::Color::Red);
-    m_object.setSize(sf::Vector2f(PADDLE_WIDTH, PADDLE_WIDTH));
+    m_object.setSize(sf::Vector2f(PADDLE_WIDTH, PADDLE_HEIGHT));
     m_object.setPosition(m_position, WINDOW_HEIGHT - PADDLE_HEIGHT);
 };
 
@@ -27,3 +27,5 @@ void Paddle::move_right()
     }
     m_object.setPosition(m_position, WINDOW_HEIGHT - PADDLE_HEIGHT);
 }
+
+

@@ -15,9 +15,8 @@ class Game
 {
 private:
     sf::RenderWindow window;
+    Paddle paddle;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Brick bricks[LAYER_COUNT][BRICK_COUNT_PER_LAYER];
     Ball ball;
-    Paddle paddle;
-    Brick bricks[LAYER_COUNT][BRICK_COUNT_PER_LAYER];
     Sound sound;
     Score score;
     
@@ -28,4 +27,5 @@ public:
     void handle_events();
     void update();
     void render();
+    void finish();
 };
