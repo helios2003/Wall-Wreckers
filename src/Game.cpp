@@ -104,7 +104,7 @@ void Game::end_game()
     sf::Clock clock;
     sound.sound_failure();
 
-    while (clock.getElapsedTime().asSeconds() < 2.0f)
+    while (clock.getElapsedTime().asSeconds() < 3.0f)
     {
         window.draw(text);
         window.display();
@@ -141,8 +141,8 @@ void Game::update()
 
     if (Collision::check_collision(ball, paddle))
     {
+        sound.sound_paddle_collision();
         Collision::calculate_collision(ball, paddle);
-        score.increase_score();
     }
     if (2 * ball.m_radius + ball.m_y > WINDOW_HEIGHT)
     {
@@ -163,6 +163,14 @@ void Game::render()
     {
         for (int j = 0; j < BRICK_COUNT_PER_LAYER; ++j)
         {
+            if (!bricks[i][j].is_destroyed && Collision::check_collision(ball, bricks[i][j]))
+            {
+                sound.sound_brick_collision();
+                Collision::calculate_collision(ball, bricks[i][j]);
+
+                bricks[i][j].is_destroyed = true;
+                score.increase_score();
+            }
             bricks[i][j].draw_object(window);
         }
     }

@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include "Ball.h"
 #include "Object.h"
+#include "Paddle.h"
 
 namespace Collision
 {

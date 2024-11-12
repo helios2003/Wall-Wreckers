@@ -22,3 +22,4 @@ void Brick::draw_object(sf::RenderWindow& window)
 }
 
 
+

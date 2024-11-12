@@ -45,7 +45,14 @@ void Collision::calculate_collision(Ball &ball, Object &object)
     float distance_x = ball_center.x - closest_x;
 
     const float half_len = PADDLE_WIDTH / 2;
-    float adjustment_factor = 1.0f + (1.0f / (1.0f + std::exp(-3 * ((distance_x * 0.1f) / half_len - 0.4f)))) * 0.1f;
+    float adjustment_factor = 1.0f;
+
+    // check the type of the object
+    Paddle* paddle = dynamic_cast<Paddle*>(&object);
+    if (paddle)
+    {
+        adjustment_factor = 1.0f + (1.0f / (1.0f + std::exp(-3 * ((distance_x * 0.1f) / half_len - 0.4f)))) * 0.1f;
+    }
     float new_vy = ball.m_vy * adjustment_factor;
     ball.m_vy = -new_vy;
 }

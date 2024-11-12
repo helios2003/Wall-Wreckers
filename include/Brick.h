@@ -6,10 +6,11 @@
 
 class Brick : public Object
 {
-private:
-    bool is_destroyed = false;
 public:
     Brick();
+    bool is_destroyed = false;
     void draw_object(sf::RenderWindow& window) override;
+    void remove_object();
     Brick(float x, float y, sf::Color color);
+
 };
