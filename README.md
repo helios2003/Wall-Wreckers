@@ -15,6 +15,8 @@ git clone https://github.com/helios2003/Wall-Wreckers.git
 - `Enter` to start the game.
 - `>: Right Arrow` to move the paddle to the right.
 - `<: Left Arrow` to move the paddle to the left.
+- `LShift` to pause the game.
+- `RShift` to resume the game.
 
 ## Tech Stack
 - C++

@@ -1,16 +1,19 @@
 #include "Collision.h"
 
-void Collision::screen_collision(Ball &ball)
+bool Collision::screen_collision(Ball &ball)
 {
     if (ball.m_x <= 0 || ball.m_x + 2 * ball.m_radius >= WINDOW_WIDTH)
     {
         ball.m_vx *= -1;
+        return true;
     }
 
     if (ball.m_y <= 0)
     {
         ball.m_vy *= -1;
+        return true;
     }
+    return false;
 }
 
 bool Collision::check_collision(Ball &ball, Object &object)

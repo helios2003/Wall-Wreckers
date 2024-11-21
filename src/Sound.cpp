@@ -11,6 +11,9 @@ Sound::Sound()
     paddle_collision_buffer.loadFromFile("assets/sound/paddle_collision.wav");
     paddle_collision_sound.setBuffer(paddle_collision_buffer);
 
+    screen_collision_buffer.loadFromFile("assets/sound/screen_collision.wav");
+    screen_collision_sound.setBuffer(screen_collision_buffer);
+
     failure_buffer.loadFromFile("assets/sound/failure.wav");
     failure_sound.setBuffer(failure_buffer);
 }
@@ -28,6 +31,11 @@ void Sound::sound_brick_collision()
 void Sound::sound_paddle_collision()
 {
     paddle_collision_sound.play();
+}
+
+void Sound::sound_screen_collision()
+{
+    screen_collision_sound.play();
 }
 
 void Sound::sound_failure()

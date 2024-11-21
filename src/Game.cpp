@@ -1,7 +1,7 @@
 #include "Game.h"
 
-Game::Game() : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Wall Wreckers")
-{
+Game::Game() : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Wall Wreckers", sf::Style::Titlebar | sf::Style::Close)
+{    
     for (int i = 0; i < LAYER_COUNT; ++i)
     {
         for (int j = 0; j < BRICK_COUNT_PER_LAYER; ++j)
@@ -14,7 +14,7 @@ Game::Game() : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Wall Wreckers
             {
                 bricks[i][j] = Brick(60 * j, 60 * (i + 1), sf::Color::Green);
             }
-            else
+            else if (i == 2)
             {
                 bricks[i][j] = Brick(60 * j, 60 * (i + 1), sf::Color::Blue);
             }
@@ -84,6 +84,21 @@ void Game::start_game()
         window.draw(text);
         window.display();
     }
+
+    paddle.m_paddle_move = true;
+    ball.m_ball_move = true;
+}
+
+void Game::pause_game()
+{
+    ball.m_ball_move = false;
+    paddle.m_paddle_move = false;
+}
+
+void Game::resume_game()
+{
+    ball.m_ball_move = true;
+    paddle.m_paddle_move = true;
 }
 
 void Game::end_game()
@@ -96,7 +111,8 @@ void Game::end_game()
     text.setCharacterSize(60);
     text.setFillColor(sf::Color::White);
 
-    text.setString("YOU LOOSE!!");
+        text.setString("YOU LOOSE!!");
+
     sf::FloatRect textBounds = text.getGlobalBounds();
     text.setOrigin(textBounds.width / 2, textBounds.height / 2);
     text.setPosition(window.getSize().x / 2, window.getSize().y / 2);
@@ -133,6 +149,14 @@ void Game::handle_events()
         {
             start_game();
         }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+        {
+            pause_game();
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))
+        {
+            resume_game();
+        }
     }
 }
 
@@ -144,13 +168,22 @@ void Game::update()
         sound.sound_paddle_collision();
         Collision::calculate_collision(ball, paddle);
     }
-    if (2 * ball.m_radius + ball.m_y > WINDOW_HEIGHT)
+    // if (bricks_count == 0)
+    // {
+    //     end_game();
+    //     return;
+    // }
+    else if (2 * ball.m_radius + ball.m_y > WINDOW_HEIGHT)
     {
         end_game();
         return;
     }
+    else if (Collision::screen_collision(ball))
+    {
+        sound.sound_screen_collision();
+    }
     ball.move_ball(paddle);
-    Collision::screen_collision(ball);
+    
 }
 
 void Game::render()
@@ -170,6 +203,7 @@ void Game::render()
 
                 bricks[i][j].is_destroyed = true;
                 score.increase_score();
+                bricks_count--;
             }
             bricks[i][j].draw_object(window);
         }

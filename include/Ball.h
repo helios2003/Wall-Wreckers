@@ -12,7 +12,6 @@
 class Ball
 {
 private:
-    bool m_moving;
     sf::CircleShape m_ball;
     sf::SoundBuffer buffer;
     Sound sound;
@@ -23,6 +22,7 @@ public:
     float m_vy; // vertical velocity
     float m_x;  // horizontal position
     float m_y;  // vertical position
+    bool m_ball_move = false;
     Ball();
     void draw_ball(sf::RenderWindow &window);
     void move_ball(Object &object);

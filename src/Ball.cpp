@@ -1,7 +1,7 @@
 #include "Ball.h"
 #include <cmath>
 
-Ball::Ball() : m_moving(false), m_radius(BALL_RADIUS), m_vx(HORIZONTAL_VELOCITY),
+Ball::Ball() : m_radius(BALL_RADIUS), m_vx(HORIZONTAL_VELOCITY),
                m_vy(VERTICAL_VELOCITY), m_x(HORIZONTAL_POSITION),
                m_y(WINDOW_HEIGHT - PADDLE_HEIGHT - 2 * BALL_RADIUS)
 {
@@ -17,7 +17,7 @@ void Ball::draw_ball(sf::RenderWindow &window)
 
 void Ball::move_ball(Object &object)
 {
-    if (m_moving)
+    if (m_ball_move)
     {
         m_x += m_vx;
         m_y += m_vy;
@@ -27,7 +27,7 @@ void Ball::move_ball(Object &object)
 
 void Ball::start_ball()
 {
-    m_moving = true;
+    m_ball_move = true;
 }
 
 sf::CircleShape Ball::get_shape()

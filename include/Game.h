@@ -19,11 +19,13 @@ private:
     Ball ball;
     Sound sound;
     Score score;
-    
+    int bricks_count = 20;
 public:
     Game();
     void run_game();
     void start_game();
+    void pause_game();
+    void resume_game();
     void end_game();
     void handle_events();
     void update();
