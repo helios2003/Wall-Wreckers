@@ -18,6 +18,10 @@ git clone https://github.com/helios2003/Wall-Wreckers.git
 - `LShift` to pause the game.
 - `RShift` to resume the game.
 
+## Demo Video
+
+![Demo Video for the game](demo/demo-video.mp4)
+
 ## Tech Stack
 - C++
 - Simple Fast Multimedia Library (SFML)

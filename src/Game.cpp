@@ -101,7 +101,7 @@ void Game::resume_game()
     paddle.m_paddle_move = true;
 }
 
-void Game::end_game()
+void Game::end_game(int bricks_count)
 {
     sf::Font font;
     font.loadFromFile("assets/font/stencil.ttf");
@@ -111,7 +111,14 @@ void Game::end_game()
     text.setCharacterSize(60);
     text.setFillColor(sf::Color::White);
 
+    if (bricks_count == 60)
+    {
+        text.setString("YOU WIN!!");
+    }
+    else 
+    {
         text.setString("YOU LOOSE!!");
+    }
 
     sf::FloatRect textBounds = text.getGlobalBounds();
     text.setOrigin(textBounds.width / 2, textBounds.height / 2);
@@ -168,14 +175,14 @@ void Game::update()
         sound.sound_paddle_collision();
         Collision::calculate_collision(ball, paddle);
     }
-    // if (bricks_count == 0)
-    // {
-    //     end_game();
-    //     return;
-    // }
+    if (bricks_count >= 60)
+    {
+        end_game(bricks_count);
+        return;
+    }
     else if (2 * ball.m_radius + ball.m_y > WINDOW_HEIGHT)
     {
-        end_game();
+        end_game(bricks_count);
         return;
     }
     else if (Collision::screen_collision(ball))
@@ -203,7 +210,7 @@ void Game::render()
 
                 bricks[i][j].is_destroyed = true;
                 score.increase_score();
-                bricks_count--;
+                bricks_count++;
             }
             bricks[i][j].draw_object(window);
         }
