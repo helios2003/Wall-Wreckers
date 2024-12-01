@@ -20,9 +20,10 @@ git clone https://github.com/helios2003/Wall-Wreckers.git
 
 ## Demo Video
 
-<video controls width="640" height="360">
-    <source src="demo/demo-video.mp4" type="video/mp4">
-</video>
+Click the on the thumbnail to watch the demo of the game.
+
+[![Watch the Demo Video](https://img.youtube.com/vi/x5TDcyW9Jy8/0.jpg)](https://www.youtube.com/watch?v=x5TDcyW9Jy8)
+
 
 ## Tech Stack
 - C++
